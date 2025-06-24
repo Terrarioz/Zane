@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      background: black;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    .logo {
+      font-size: 4rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .logo span:nth-child(1) { color: #4285F4; }
+    .logo span:nth-child(2) { color: #EA4335; }
+    .logo span:nth-child(3) { color: #FBBC05; }
+    .logo span:nth-child(4) { color: #4285F4; }
+    .logo span:nth-child(5) { color: #34A853; }
+    .logo span:nth-child(6) { color: #EA4335; }
+
+    .search-box {
+      background: black;
+      border: 2px solid #0ff;
+      color: #0ff;
+      width: 500px;
+      max-width: 90%;
+      padding: 15px 20px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      text-align: left;
+      box-shadow: 0 0 10px #0ff;
+      caret-color: transparent;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 5px #0ff; }
+      50% { box-shadow: 0 0 20px #0ff; }
+      100% { box-shadow: 0 0 5px #0ff; }
+    }
+
+    ::selection {
+      background: #0ff;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+  </div>
+  <input type="text" id="search" class="search-box" disabled />
+
+  <script>
+    const text = "who is zane?";
+    const input = document.getElementById("search");
+    let index = 0;
+
+    function typeText() {
+      if (index < text.length) {
+        input.value = text.slice(0, index + 1);
+        index++;
+        setTimeout(typeText, 150);
+      } else {
+        // 打字结束后自动跳转
+        setTimeout(() => {
+          window.location.href = "search-results.html";
+        }, 500);
+      }
+    }
+
+    setTimeout(typeText, 1000); // 延迟 1 秒再开始打字
+  </script>
+</body>
+</html>
